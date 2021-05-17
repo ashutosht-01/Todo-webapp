@@ -4,11 +4,16 @@
     </div>
     <div class='box'>
             <% for(var  i=0;i<newitems.length;i++) { %>
+              <!-- this route '/delete' is responsible for deleting the item from the databses -->
+            <form action="/delete" method="POST">
              <div class='item'>
-             <input type='checkbox'>
-             <p><%=newitems[i]%></p>
-            </div>
-          <%  } %>
+             <input type='checkbox' value="<%=newitems[i]._id%>"onChange="this.form.submit()" name="checkbox">
+             <p><%=newitems[i].name%></p>
+            </form>
+            <!-- when check box is changed then it is going to submit -->
+       </div>
+            <%  } %>
+          <!-- this route '/'=> is respondible for adding new item into the database -->
           <form class='item'action='/' method='POST'>
             <input type='text' name='inp' placeholder='New Item' autocomplete="off">
             <button type='submit' name='btn' value='<%= ListTitle %>'>+</button>
